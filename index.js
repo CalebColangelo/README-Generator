@@ -1,8 +1,41 @@
-
 import inquirer from 'inquirer';
+import fs from 'fs'
 
 
-const questions = ['What is the name of your project?', 'Please provide a short description of your project.', 'What are the steps to install the project?', 'Please enter any usage information.', 'How can users contribute to the project?', 'Please add any test instructions.', 'What is your GitHub username?', 'What is your email adress?'];
+const generateREADME = ({ projectName, shortDescription, installSteps, usageInfo, licenseChoice, contributeTo, contactEmail, githubUser }) => 
+`${projectName}
+## Description
+
+${shortDescription}
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
+- [License](#license)
+
+## Installation
+
+${installSteps}
+
+## Usage
+
+${usageInfo}
+
+
+## License
+
+${licenseChoice}
+
+## Badges
+
+
+## How to Contribute
+
+${contributeTo}
+Email me at: ${contactEmail}
+or see my GitHub at ${githubUser} `
 
 const questionInputs = inquirer.prompt([
     {
@@ -53,23 +86,16 @@ const questionInputs = inquirer.prompt([
     }
 ])
     .then((response) => {
-        console.log(`My project name is ${response.projectName}`)
-        console.log(response)
-        const licenseChoice = response.licenseChoice
-        console.log(licenseChoice)
+        const READMEcontent = generateREADME(response)
+
+        fs.writeFile('README.md', READMEcontent, (err) =>
+            err ? console.log(err) : console.log('Successfully created README.md!')
+          );
     })
 
-
-module.exports = {
-    questionInputs
-}
-
-// TODO: Create a function to write README file
-function writeToFile(data) { }
-
 // TODO: Create a function to initialize app
-function init() { }
+// function init() { }
 
 // Function call to initialize app
-init();
+// init();
 
