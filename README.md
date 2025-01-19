@@ -2,8 +2,6 @@
 
 ## Description
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
-
 I created this generator so that developers would be able to spend more time working on their actual project, and less time worrying about having a professional README. This application greatly reduces the time it takes to create a README, so devs dont have to worry about taking time out of their project to make one, just answer a few simple question and the work is done for you! It is all done using  node.js and inqurier. These two tools are what allowed me to create this app. 
 
 ## Installation
